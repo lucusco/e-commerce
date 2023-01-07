@@ -25,4 +25,6 @@ RUN apk update --no-cache \
 
 RUN rm -rf /var/cache/apk/*
 
+WORKDIR /www
+
 CMD ["php-fpm"]
