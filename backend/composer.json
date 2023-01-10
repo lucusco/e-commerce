@@ -1,6 +1,6 @@
 {
-  "name": "luisbueno_dev/e-commerce",
-  "description": "E-commerce study project",
+  "name": "luisbueno_dev/e-commerce-api",
+  "description": "API for E-commerce study project",
   "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [

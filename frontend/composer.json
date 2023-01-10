@@ -1,0 +1,23 @@
+{
+  "name": "luisbueno_dev/e-commerce-frontend",
+  "description": "Frontend E-commerce study project",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Luis Bueno",
+      "email": "luisbuenodev@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Ecommerce\\": "src/"
+    }
+  },
+  "require": {
+    "ext-json": "*",
+    "slim/slim": "4.*",
+    "guzzlehttp/psr7": "^2.4",
+    "php-di/slim-bridge": "^3.2"
+  }
+}
