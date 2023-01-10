@@ -1,10 +1,10 @@
-FROM php:8.2-fpm-alpine
+FROM php:8.2-fpm-alpine AS ecommerce-development
 
 RUN sed -i 's/;date.timezone =/date.timezone=\"America\/Sao_Paulo\"/g' $PHP_INI_DIR/php.ini-development
 
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
-COPY ./90-xdebug.ini "${PHP_INI_DIR}/conf.d"
+COPY ./php/90-xdebug.ini "${PHP_INI_DIR}/conf.d"
 
 RUN apk update --no-cache \
   && apk add pcre-dev ${PHPIZE_DEPS} \
@@ -24,7 +24,5 @@ RUN apk update --no-cache \
   && apk del pcre-dev ${PHPIZE_DEPS}
 
 RUN rm -rf /var/cache/apk/*
-
-WORKDIR /www
 
 CMD ["php-fpm"]
