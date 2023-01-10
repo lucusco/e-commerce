@@ -2,25 +2,42 @@ version: '3'
 
 services:
   nginx:
-    build: ./.docker/nginx
+    image: nginx:1.23-alpine
     container_name: nginx
+    working_dir: /www
     restart: always
     ports:
       - "80:80"
       - "443:443"
+      - "3000:3000"
     volumes:
       - .:/www
       - ./.docker/nginx/certs:/etc/nginx/certs
-    links:
-      - php
+      - ./.docker/nginx/nginx-ssl.conf:/etc/nginx/nginx.conf:ro
     networks:
       - internal
 
-  php:
-    build: ./.docker/php
-    container_name: php8
+  frontend:
+    image: ecommerce-development
+    #build:
+    #  context: ./frontend
+    #  dockerfile: ./../.docker/php/Dockerfile
+    working_dir: /www/frontend
+    container_name: frontend
     volumes:
-      - .:/www
+      - ./frontend:/www/frontend
+    networks:
+      - internal
+
+  backend:
+    image: ecommerce-development
+    #build:
+    #  context: ./backend
+    #  dockerfile: ./../.docker/php/Dockerfile
+    working_dir: /www/backend
+    container_name: backend
+    volumes:
+      - ./backend:/www/backend
     networks:
       - internal
 
