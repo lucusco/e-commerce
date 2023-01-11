@@ -1,7 +1,7 @@
-## Study project
+## E-commerce Study Project
 
 The purpose of this project is to improve my development skills.   
-My main goal is to build an e-commerce.
+
 ---
 
 ### Technologies
